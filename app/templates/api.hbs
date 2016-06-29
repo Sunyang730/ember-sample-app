@@ -1,0 +1,41 @@
+<div class="container__left">
+  <img class='logo' src="smartcar_white_on_red.png" alt="Logo">
+  <ul>GET</ul>
+  {{#each getApi as |api|}}
+    {{api-link api=api clearActive='clearActive' href=api.link}}
+  {{/each}}
+  <ul>POST</ul>
+  {{#each postApi as |api|}}
+    {{api-link api=api clearActive='clearActive' href=api.link}}
+  {{/each}}
+  <div class="container__footer">
+    <div class="footer__id">
+      id: <input type="text" value={{userId}} onkeyup={{action "userIdChanged" value="target.value"}}>
+      <div>
+        <sub>*Please setup an id or it will default to 123</sub>
+      </div>
+    </div>
+    <div class="footer__api-key">api Key: {{apiKey}}</div>
+    <button {{action 'newApiKey'}}>New Api Key</button>
+  </div>
+</div>
+<div class="container__right">
+  <div class="container__content">
+    <h1 class="container__title">
+      Get Request
+    </h1>
+    {{#each getApi as |api|}}
+      {{api-request id=api.id api=api key=apiKey userId=userId}}
+    {{/each}}
+  </div>
+
+  <div class="container__content">
+    <h1 class="container__title">
+      Post Request
+    </h1>
+    {{#each postApi as |api|}}
+      {{api-request id=api.id api=api key=apiKey userId=userId}}
+    {{/each}}
+  </div>
+</div>
+

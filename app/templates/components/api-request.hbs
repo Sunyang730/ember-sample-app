@@ -1,0 +1,62 @@
+<div class="content">
+  <h3>
+    {{api.title}}
+  </h3>
+  <div>
+    <span class="parameter__title">Method:</span>
+    <span class="parameter__content">{{api.method}}</span>
+  </div>
+  <div>
+    <span class="parameter__title">Url:</span>
+    <span class="parameter__content">{{api.url}}</span>
+  </div>
+
+  <div class="request__title">
+    Request Parameters
+  </div>
+  <div class="request__parameters">
+    {{#each api.request as |request|}}
+      <div class="parameter__container">
+        <div>
+          <span class="parameter__title">Field:</span>
+          <span class="parameter__content">{{request.field}}</span>
+        </div>
+        <div>
+          <span class="parameter__title">Type:</span>
+          <span class="parameter__content">{{request.type}}</span>
+        </div>
+        <div>
+          <span class="parameter__title">Description:</span>
+          <span class="parameter__content">{{request.description}}</span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="request__title">
+    Response
+  </div>
+  {{#each api.response as |response|}}
+    <div class="parameter__container">
+      <div>
+        <span class="parameter__title">Field:</span>
+        <span class="parameter__content">{{response.field}}</span>
+      </div>
+      <div>
+        <span class="parameter__title">Type:</span>
+        <span class="parameter__content">{{response.type}}</span>
+      </div>
+      <div>
+        <span class="parameter__title">Description:</span>
+        <span class="parameter__content">{{response.description}}</span>
+      </div>
+    </div>
+  {{/each}}
+
+  <div class="example-container">
+    <div class="example__title">Example: </div>
+    <div class="example__content">
+      {{formattedExample}}
+    </div>
+  </div>
+</div>
